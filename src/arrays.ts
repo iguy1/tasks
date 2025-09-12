@@ -115,8 +115,29 @@ export function makeMath(addends: number[]): string {
  */
 export function injectPositive(values: number[]): number[] {
     //const newValues = values.reduce((value:number)=> value>0 ? );
+    if(values.length ===0){
+        return [0];
+    }
+    let inserted = false;
+    let sum = 0;
 
+    const newValues = values.reduce((total: number[], value: number,index:number) => {
+        if (!inserted) {
+            if (value < 0) {
+                inserted = true;
+                return [...total, value, sum];
+            } else {
+                sum+=value;
+                const newTotal = [...total, value];
+                if(index===values.length-1){
+                    return [...total, value, sum];
+                }
+                return newTotal
+            }
+        } else {
+            return [...total, value];
+        }
+    }, []);
 
-
-    return [];
+  return newValues
 }
