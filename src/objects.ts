@@ -10,8 +10,7 @@ export function makeBlankQuestion(
     name: string,
 
     type: QuestionType,
-=======
-    type: QuestionType
+
 
 ): Question {
     return {
@@ -38,7 +37,7 @@ export function isCorrect(question: Question, answer: string): boolean {
     return (
         answer.trim().toLowerCase() === question.expected.trim().toLowerCase()
     );
-=======
+
 
 }
 
@@ -57,12 +56,6 @@ export function isValid(question: Question, answer: string): boolean {
     }
 
     
-    if (question.type === "multiple_choice_question") {
-        return question.options.includes(answer);
-    }
-    else{
-        return true;
-    }
 
 }
 
@@ -76,7 +69,6 @@ export function toShortForm(question: Question): string {
 
     const newQuestion = question.id + ": " + question.name.slice(0, 10);
 
-    const newQuestion = question.id + ": "+ question.name.slice(0,10);
 
     return newQuestion;
 }
@@ -106,11 +98,6 @@ export function toMarkdown(question: Question): string {
 
     return `# ${question.name}\n${question.body}`;
 
-    if(question.type === "multiple_choice_question"){
-        return `# ${question.name}\n${question.body}\n- ${question.options.join().replaceAll(",","\n- ")}`;
-    }
-
-    return `# ${question.name}\n${question.body}`;
     
 
 }
@@ -144,16 +131,14 @@ export function publishQuestion(question: Question): Question {
  * The `published` field should be reset to false.
  */
 export function duplicateQuestion(id: number, oldQuestion: Question): Question {
-    const newName = `Copy of ${oldQuestion.name}`;
-<
-    const anotherQuestion = {
-        ...oldQuestion,
-        id: id,
-        name: newName,
-        published: false,
-    };
+const newName = `Copy of ${oldQuestion.name}`;
+const anotherQuestion = {
+    ...oldQuestion,
+    id: id,
+    name: newName,
+    published: false,
+};
 
-    const anotherQuestion = {...oldQuestion, id: id, name:newName, published: false};
 
     return anotherQuestion;
 }
