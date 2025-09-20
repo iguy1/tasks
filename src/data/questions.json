@@ -73,6 +73,7 @@
             "published": false
         }
     ],
+
     "TRIVIA_QUESTIONS": [
         {
             "id": 1,
@@ -216,5 +217,9 @@
             "points": 100,
             "published": true
         }
-    ]
+   
+    "SIMPLE_QUESTIONS_2": [],
+    "EMPTY_QUESTIONS": [],
+    "TRIVIA_QUESTIONS": []
+
 }
