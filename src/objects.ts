@@ -8,7 +8,11 @@ import { Question, QuestionType } from "./interfaces/question";
 export function makeBlankQuestion(
     id: number,
     name: string,
+
+    type: QuestionType,
+=======
     type: QuestionType
+
 ): Question {
     return {
         id: id,
@@ -30,7 +34,12 @@ export function makeBlankQuestion(
  * HINT: Look up the `trim` and `toLowerCase` functions.
  */
 export function isCorrect(question: Question, answer: string): boolean {
-    return answer.trim().toLowerCase() === question.expected.trim().toLowerCase();
+
+    return (
+        answer.trim().toLowerCase() === question.expected.trim().toLowerCase()
+    );
+=======
+
 }
 
 /**
@@ -40,6 +49,13 @@ export function isCorrect(question: Question, answer: string): boolean {
  * be exactly one of the options.
  */
 export function isValid(question: Question, answer: string): boolean {
+
+    if (question.type === "multiple_choice_question") {
+        return question.options.includes(answer);
+    } else {
+        return true;
+    }
+
     
     if (question.type === "multiple_choice_question") {
         return question.options.includes(answer);
@@ -47,7 +63,7 @@ export function isValid(question: Question, answer: string): boolean {
     else{
         return true;
     }
-    
+
 }
 
 /**
@@ -57,7 +73,11 @@ export function isValid(question: Question, answer: string): boolean {
  * name "My First Question" would become "9: My First Q".
  */
 export function toShortForm(question: Question): string {
+
+    const newQuestion = question.id + ": " + question.name.slice(0, 10);
+
     const newQuestion = question.id + ": "+ question.name.slice(0,10);
+
     return newQuestion;
 }
 
@@ -79,12 +99,20 @@ export function toShortForm(question: Question): string {
  * Check the unit tests for more examples of what this looks like!
  */
 export function toMarkdown(question: Question): string {
+
+    if (question.type === "multiple_choice_question") {
+        return `# ${question.name}\n${question.body}\n- ${question.options.join().replaceAll(",", "\n- ")}`;
+    }
+
+    return `# ${question.name}\n${question.body}`;
+
     if(question.type === "multiple_choice_question"){
         return `# ${question.name}\n${question.body}\n- ${question.options.join().replaceAll(",","\n- ")}`;
     }
 
     return `# ${question.name}\n${question.body}`;
     
+
 }
 
 /**
@@ -92,9 +120,8 @@ export function toMarkdown(question: Question): string {
  * `newName`.
  */
 export function renameQuestion(question: Question, newName: string): Question {
-    const reName = {...question,
-        name: newName
-    }
+    const reName = { ...question, name: newName };
+    
     return reName;
 }
 
@@ -104,7 +131,9 @@ export function renameQuestion(question: Question, newName: string): Question {
  * published; if it was published, now it should be not published.
  */
 export function publishQuestion(question: Question): Question {
-    const newQuestion = {...question, published: !question.published};
+    const newQuestion = { ...question, published: !question.published };
+
+
     return newQuestion;
 }
 
@@ -116,7 +145,16 @@ export function publishQuestion(question: Question): Question {
  */
 export function duplicateQuestion(id: number, oldQuestion: Question): Question {
     const newName = `Copy of ${oldQuestion.name}`;
+<
+    const anotherQuestion = {
+        ...oldQuestion,
+        id: id,
+        name: newName,
+        published: false,
+    };
+
     const anotherQuestion = {...oldQuestion, id: id, name:newName, published: false};
+
     return anotherQuestion;
 }
 
@@ -128,7 +166,10 @@ export function duplicateQuestion(id: number, oldQuestion: Question): Question {
  * Check out the subsection about "Nested Fields" for more information.
  */
 export function addOption(question: Question, newOption: string): Question {
+
+
     const deepclonedOptions:Question = {...question};
+
     deepclonedOptions.options = [...deepclonedOptions.options, newOption];
 
     return deepclonedOptions;
@@ -142,7 +183,11 @@ export function addOption(question: Question, newOption: string): Question {
  * Notice that the second Question is provided as just an object with a `points`
  * field; but the function call would be the same as if it were a `Question` type!
  */
+
+
+
 export function mergeQuestion(id: number,name: string,contentQuestion: Question,{ points }: { points: number }): Question {
     const newQuestion = {...contentQuestion,id:id, name:name,points:points,published:false};
+
     return newQuestion;
 }
