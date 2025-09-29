@@ -1,15 +1,17 @@
 import React from "react";
+import {Button,Container,Col,Row} from "react-bootstrap"
 import "./App.css";
 import { ChangeType } from "./components/ChangeType";
 import { RevealAnswer } from "./components/RevealAnswer";
 import { StartAttempt } from "./components/StartAttempt";
 import { TwoDice } from "./components/TwoDice";
-// import { CycleHoliday } from "./components/CycleHoliday";
+import { CycleHoliday } from "./components/CycleHoliday";
 import { Counter } from "./components/Counter";
 import { DoubleHalf } from "./bad-components/DoubleHalf";
 import { ColoredBox } from "./bad-components/ColoredBox";
 import { ShoveBox } from "./bad-components/ShoveBox";
 import { ChooseTeam } from "./bad-components/ChooseTeam";
+import miles from "./miles.gif";
 
 function App(): React.JSX.Element {
     return (
@@ -19,20 +21,27 @@ function App(): React.JSX.Element {
             </header>
             <hr></hr>
             {/* <DoubleHalf></DoubleHalf> */}
-            <hr></hr>
-            <ChooseTeam></ChooseTeam>
-            <hr></hr>
-            <ColoredBox></ColoredBox>
-            <hr></hr>
-            <ShoveBox></ShoveBox>
-            <hr></hr>
-            <Counter></Counter>
+           
             <hr />
             <ChangeType />
             <hr />
             <StartAttempt />
             <hr />
+            <RevealAnswer />
+            <hr />
             <TwoDice />
+            <hr />
+            <CycleHoliday />
+            <hr />
+            <Counter />
+            <hr />
+            <DoubleHalf />
+            <hr />
+            <ChooseTeam />
+            <hr />
+            <ColoredBox />
+            <hr />
+            <ShoveBox />
             {/*
             <TwoDice></TwoDice>
             <hr />
