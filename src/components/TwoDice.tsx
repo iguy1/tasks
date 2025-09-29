@@ -13,8 +13,8 @@ export function d6(): number {
 
 export function TwoDice(): React.JSX.Element {
 
-    const [rollLeft, setRollLeft] = useState<number>(3)
-    const [rollRight, setRollRight] = useState<number>(1);
+    const [rollLeft, setRollLeft] = useState<number>(1)
+    const [rollRight, setRollRight] = useState<number>(2);
 
     function RollR():void{
         setRollRight(

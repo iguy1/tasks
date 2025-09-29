@@ -1,13 +1,17 @@
 import React from "react";
+import {Button,Container,Col,Row} from "react-bootstrap"
 import "./App.css";
 import { ChangeType } from "./components/ChangeType";
 import { RevealAnswer } from "./components/RevealAnswer";
 import { StartAttempt } from "./components/StartAttempt";
 import { TwoDice } from "./components/TwoDice";
-// import { CycleHoliday } from "./components/CycleHoliday";
+import { CycleHoliday } from "./components/CycleHoliday";
 import { Counter } from "./components/Counter";
-import miles from "./assets/miles.gif";
-import {Button, Row,Container,Col} from 'react-bootstrap'
+import { DoubleHalf } from "./bad-components/DoubleHalf";
+import { ColoredBox } from "./bad-components/ColoredBox";
+import { ShoveBox } from "./bad-components/ShoveBox";
+import { ChooseTeam } from "./bad-components/ChooseTeam";
+import miles from "./miles.gif";
 
 function App(): React.JSX.Element {
     return (
@@ -15,17 +19,29 @@ function App(): React.JSX.Element {
             <header className="App-header">
                 UD CISC275 with React Hooks and TypeScript coded by Ian Guy.
             </header>
-            
-            <hr />
-            <Counter />
-            <hr />
-            <RevealAnswer />
+            <hr></hr>
+            {/* <DoubleHalf></DoubleHalf> */}
+           
             <hr />
             <ChangeType />
             <hr />
             <StartAttempt />
             <hr />
+            <RevealAnswer />
+            <hr />
             <TwoDice />
+            <hr />
+            <CycleHoliday />
+            <hr />
+            <Counter />
+            <hr />
+            <DoubleHalf />
+            <hr />
+            <ChooseTeam />
+            <hr />
+            <ColoredBox />
+            <hr />
+            <ShoveBox />
             {/*
             <TwoDice></TwoDice>
             <hr />
